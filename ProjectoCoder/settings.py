@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AppCoder',
     'Cuenta',
+    'Posts',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'ProjectoCoder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C://Users//facun//Desktop//PythonProyecto1//ProyectoDemo//',],
+        'DIRS': ['C://Users//facun//Desktop//PythonProyecto1//ProyectoDemo//'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,6 +122,7 @@ LOGIN_URL = 'login/'
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -1,0 +1,26 @@
+{% extends "AppCoder/template/padre.html" %}
+
+
+{% block page %}
+
+<h3>POSTS</h3>
+
+<h2>Postea lo que quieras donde quieras!!!</h2>
+
+{% endblock page %}
+
+
+{% block contenidoQueCambia %} 
+
+<form action="" method="POST" >{% csrf_token %} 
+
+   <table>
+
+        {{ miFormulario.as_table}}
+
+   </table>
+
+   <button>  Subir POST </button>
+
+</form>
+{% endblock contenidoQueCambia %}

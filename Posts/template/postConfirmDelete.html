@@ -1,0 +1,17 @@
+{% extends "AppCoder/template/padre.html" %}
+
+{% block contenidoQueCambia %} 
+
+   <from method="post">>
+
+    {% csrf_token %}
+
+    Quiere confirmar el borrado?
+    <input type = "submit" value ="Si">
+
+   </from>
+
+
+
+
+{% endblock contenidoQueCambia %}

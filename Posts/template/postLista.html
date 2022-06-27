@@ -1,0 +1,27 @@
+{% extends "AppCoder/template/padre.html" %}
+
+
+{% block page %}
+
+<h3>POSTS</h3>
+
+
+{% endblock page %}
+
+
+{% block contenidoQueCambia %} 
+
+    {% for post in posts %} 
+
+    <div class="card-body">
+        <div class="small text-muted">{{post.fecha}}</div>
+        <h2 class="card-title">{{post.titulo}}</h2>
+        <p class="card-text">{{post.subtitulo}}</p>
+        <p class="card-text">{{post.autor}}</p>  
+    </div>
+
+{% endfor %}
+
+
+{% endblock contenidoQueCambia %}
+

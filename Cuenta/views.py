@@ -3,6 +3,10 @@ from django.contrib.auth import login , logout, authenticate
 from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth.decorators import login_required
+from Cuenta.models import *
+from Cuenta.form import *
+
+from Cuenta.form import  UserEditForm, UserRegisterForm
 
 
 def login_request(request):
@@ -40,7 +44,7 @@ def register(request):
 
     if request.method == 'POST':
 
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
 
         if form.is_valid():
 
@@ -53,7 +57,46 @@ def register(request):
     else:
 
 
-            form = UserCreationForm()
+            form = UserRegisterForm()
 
-    return render(request, "Cuenta/template/registro.html" , {"form":form})        
+    return render(request, "Cuenta/template/registro.html" , {"form":form}) 
+
+
+@login_required
+def editarPerfil(request):
+
+
+    usuario = request.user
+
+
+    if request.method == 'POST':
+
+        miForumlario = UserEditForm(request.POST)
+        if miForumlario.is_valid:
+
+
+            informacion = miForumlario.cleaned_data
+
+
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            usuario.nombre = informacion['nombre']
+            usuario.apellido = informacion['apellido']
+            usuario.save()
+
+            return render(request, 'AppCoder/template/inicio.html')
+    
+    else:
+
+            miForumlario = UserEditForm(initial={'email':usuario.email})
+
+
+    return render(request, "Cuenta/template/editarPerfil.html", {"miFormulario":miForumlario, "usuario":usuario})        
+
+
+
+ 
             
+
+
