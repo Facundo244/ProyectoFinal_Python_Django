@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth import login , logout, authenticate
 from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
@@ -72,12 +72,10 @@ def editarPerfil(request):
     if request.method == 'POST':
 
         miForumlario = UserEditForm(request.POST)
-        if miForumlario.is_valid:
+        if miForumlario.is_valid():
 
 
             informacion = miForumlario.cleaned_data
-
-
             usuario.email = informacion['email']
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password2']
@@ -85,14 +83,16 @@ def editarPerfil(request):
             usuario.apellido = informacion['apellido']
             usuario.save()
 
-            return render(request, 'AppCoder/template/inicio.html')
+            return redirect("Inicio")
     
+        else:
+
+            miForumlario = UserEditForm(initial={'email':usuario.email })
+            return render(request, "Cuenta/template/editarPerfil.html")
+
     else:
-
-            miForumlario = UserEditForm(initial={'email':usuario.email})
-
-
-    return render(request, "Cuenta/template/editarPerfil.html", {"miFormulario":miForumlario, "usuario":usuario})        
+        miForumlario = UserEditForm(initial ={"email":usuario.email})
+        return render(request, "Cuenta/template/editarPerfil.html", {"miFormulario":miForumlario, "usuario":usuario})        
 
 
 

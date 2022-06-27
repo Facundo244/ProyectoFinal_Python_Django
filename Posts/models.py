@@ -8,12 +8,13 @@ class Post(models.Model):
 
     titulo = models.CharField(max_length=20)
     subtitulo = models.CharField(max_length=50)
-    texto = models.TextField(max_length=2000)
+    texto = models.TextField(max_length=3000)
     autor = models.CharField(max_length=50)
     fecha = models.DateField(default=date.today)
+    
 
     def __str__(self):
-        return f'{self.titulo} by {self.autor}'
+        return self.titulo
 
 
 

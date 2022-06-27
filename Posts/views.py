@@ -8,6 +8,7 @@ from Posts.forms import FormularioPost  , BuscarPost
 
 
 
+
 # Create your views here.
 
 @login_required

@@ -4,14 +4,11 @@ from django.core.exceptions import ValidationError
 
 
 class FormularioPost(forms.Form):
-
-    titulo = forms.Charfield(max_lenght=20)
-    subtitulo = forms.CharField(max_lenght=50)
-    text = forms.CharField(max_lenght=50)
+    titulo = forms.CharField(max_length=20)
+    subtitulo = forms.CharField(max_length=50)
+    texto = forms.CharField(widget=forms.Textarea)
     autor = forms.CharField(max_length=50)
-    imagen_post = forms.ImageField(required = False )
 
 
 class BuscarPost(forms.Form):
-
-    autor = forms.CharField(max_length=25)
+    titulo = forms.CharField(max_length=25)
