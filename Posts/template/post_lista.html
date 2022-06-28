@@ -1,0 +1,60 @@
+{% extends "AppCoder/template/padre.html" %}
+
+
+{% block page %}
+
+<h3>POSTS</h3>
+
+
+{% endblock page %}
+
+
+{% block contenidoQueCambia %} 
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Post List</title>
+    </head>
+
+<body>
+
+    <h1>Post publicados C:</h1>
+    <ul>
+
+        {% for post in object_list %}
+
+            <li>
+
+                <p>TITULO: {{ post.titulo}}</p>
+                <p>SUBTITULO: {{ post.subtitulo}}</p>
+                <p>
+
+                    <a href="{% url 'post_detail' post.id%}" > Ver</a>
+                    <a href="{% url 'post_edit' post.id %}" > Editar</a>
+                    <a href="{% url 'post_borrar' post.id %}" > Eliminar</a>
+
+
+                </p>
+
+
+
+            </li>
+
+
+
+        {% endfor %}
+
+        </ul>
+
+
+</body>
+</html>
+
+{% endblock contenidoQueCambia %}
+

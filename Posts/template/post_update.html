@@ -1,0 +1,48 @@
+{% extends "AppCoder/template/padre.html" %}
+
+
+{% block page %}
+
+<h3>Listado de POSTS</h3>
+
+
+{% endblock page %}
+
+
+{% block contenidoQueCambia %} 
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Post Update</title>
+    </head>
+
+<body>
+
+
+    <form action="" method="post">
+        {% csrf_token %}    
+            <tr>
+                {{ form.as_p}}
+            </tr>
+        </table>
+        {% if object %}
+            <input type="submit" value="Update Post" />
+        {% else %}
+            <input type="submit" value="Add Author" />
+        {% endif %}
+    </form>
+
+
+
+</body>
+</html>
+
+
+
+{% endblock contenidoQueCambia %}

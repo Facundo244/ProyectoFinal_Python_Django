@@ -13,8 +13,8 @@ class Post(models.Model):
     fecha = models.DateField(default=date.today)
     
 
-    def __str__(self):
-        return self.titulo
+    def __str__(self) -> str:
+        return self.titulo+""+str(self.titulo)
 
 
 

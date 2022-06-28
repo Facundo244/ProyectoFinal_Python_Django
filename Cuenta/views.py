@@ -87,11 +87,11 @@ def editarPerfil(request):
     
         else:
 
-            miForumlario = UserEditForm(initial={'email':usuario.email })
+            miForumlario = UserEditForm(initial={'email':usuario.email , 'nombre':usuario.nombre , 'apellido':usuario.apellido})
             return render(request, "Cuenta/template/editarPerfil.html")
 
     else:
-        miForumlario = UserEditForm(initial ={"email":usuario.email})
+        miForumlario = UserEditForm(initial ={'email':usuario.email , 'nombre':usuario.nombre , 'apellido':usuario.apellido})
         return render(request, "Cuenta/template/editarPerfil.html", {"miFormulario":miForumlario, "usuario":usuario})        
 
 

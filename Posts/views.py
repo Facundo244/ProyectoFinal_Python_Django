@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from django.views.generic import  DetailView
-from django.views.generic.edit import DeleteView
+from django.views.generic import  ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import DeleteView , UpdateView  , CreateView
 from Posts.models import Post
 from Posts.forms import FormularioPost  , BuscarPost
 
@@ -36,32 +37,43 @@ def postFormulario(request):
     return render(request, "Posts/template/postFormulario.html", {'miFormulario':miFormulario})  
 
 
-class PostView(DetailView):
+
+
+
+class DeletePost(DeleteView):
+
     model = Post
-    template_name = 'Post/template/postView.html'
+    template_name = 'Posts/template/post_confirm_delete.html'
+    success_url = reverse_lazy('post_lista')
 
 
-def postLista(request):
+class UpdatePost(UpdateView):
 
-    postAbuscar = request.GET.get('titulo', None)
-
-    if postAbuscar is not None:
-
-        post = Post.objects.filter(titulo = postAbuscar)
-    else:
-        post = Post.objects.all()
-
-    form = BuscarPost()
-    return render (request , 'Posts/template/postLista.html' , {'form':form , 'post': post})
+    model= Post
+    fields = ['titulo' , 'subtitulo' , 'texto']
+    template_name = 'Posts/template/post_update.html'
+    success_url = reverse_lazy('post_lista')
 
 
-
-
-
-class EliminarPost(DeleteView):
+class PostDetail(DetailView):
     model = Post
-    template_name = "Post/template/postConfirmDelete.html"
-    success_url = reverse_lazy('Blog')
+    template_name = 'Posts/template/post_detail.html'
+
+
+class PostList(ListView):
+
+    model = Post
+    template_name = 'Posts/template/post_lista.html'
+
+
+class PostCreate(CreateView):
+
+    model = Post
+    success_url = reverse_lazy('post_lista')
+    fields = ['titulo' , 'subtitulo' , 'texto' , 'autor' , 'fecha']
+
+
+
 
 
 
