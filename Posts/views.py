@@ -1,11 +1,16 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.generic import  ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView , UpdateView  , CreateView
+import Posts
 from Posts.models import Post
 from Posts.forms import FormularioPost  , BuscarPost
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q 
+
 
 
 
@@ -40,14 +45,14 @@ def postFormulario(request):
 
 
 
-class DeletePost(DeleteView):
+class DeletePost(LoginRequiredMixin ,DeleteView):
 
     model = Post
     template_name = 'Posts/template/post_confirm_delete.html'
     success_url = reverse_lazy('post_lista')
 
 
-class UpdatePost(UpdateView):
+class UpdatePost(LoginRequiredMixin ,UpdateView):
 
     model= Post
     fields = ['titulo' , 'subtitulo' , 'texto']
@@ -55,22 +60,39 @@ class UpdatePost(UpdateView):
     success_url = reverse_lazy('post_lista')
 
 
-class PostDetail(DetailView):
+class PostDetail(LoginRequiredMixin ,DetailView):
     model = Post
     template_name = 'Posts/template/post_detail.html'
 
 
-class PostList(ListView):
+class PostList(LoginRequiredMixin , ListView):
 
     model = Post
     template_name = 'Posts/template/post_lista.html'
 
 
-class PostCreate(CreateView):
+class PostCreate(LoginRequiredMixin ,CreateView):
 
     model = Post
     success_url = reverse_lazy('post_lista')
     fields = ['titulo' , 'subtitulo' , 'texto' , 'autor' , 'fecha']
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
 
 
 

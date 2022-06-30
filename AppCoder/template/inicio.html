@@ -2,9 +2,33 @@
 
 {% load static % }
 
+
+
 {% block contenidoQueCambia %}  
 
+
 <h1>{{mensaje}}</h1>
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% for post in posts %}
+            <div class="post-preview">              
+                <h2 class="post-title">{{post.titulo}}</h2>
+                <h3 class="post-subtitle">{{post.subtitulo}}</h3>
+                <p class="post-meta">Posteado por {{post.autor}} el {{post.fecha}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% block pagination %}
+
+
+
+
+{% endblock pagination %}
+
 
 {% endblock %}
 

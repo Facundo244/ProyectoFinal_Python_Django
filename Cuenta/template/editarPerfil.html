@@ -11,7 +11,7 @@
 
 {% block contenidoQueCambia %} 
 
-<form action="" method="POST" >{% csrf_token %} 
+<form action="" method="POST"> {% csrf_token %} 
 
    <table>
 
@@ -19,7 +19,7 @@
 
    </table>
 
-   <input type ="submit", value ="Enviar">
+   <button type="submit" class="btn btn-dark" >Guardar</button>
 
 </form>
 {% endblock contenidoQueCambia %}

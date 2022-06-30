@@ -1,12 +1,14 @@
+from urllib import request
 from django.shortcuts import redirect, render
-from django.contrib.auth import login , logout, authenticate
+from django.contrib.auth import login , authenticate
 from django.shortcuts import render
-from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from Cuenta.models import *
 from Cuenta.form import *
 
 from Cuenta.form import  UserEditForm, UserRegisterForm
+
 
 
 def login_request(request):
@@ -63,6 +65,12 @@ def register(request):
 
 
 @login_required
+def perfil(request):
+
+    return render(request , "Cuenta/template/profile.html")
+
+
+@login_required
 def editarPerfil(request):
 
 
@@ -71,11 +79,12 @@ def editarPerfil(request):
 
     if request.method == 'POST':
 
-        miForumlario = UserEditForm(request.POST)
-        if miForumlario.is_valid():
+        miFormulario = UserEditForm(request.POST)
+        if miFormulario.is_valid():
 
 
-            informacion = miForumlario.cleaned_data
+            informacion = miFormulario.cleaned_data
+            usuario.username = informacion['username']
             usuario.email = informacion['email']
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password2']
@@ -87,16 +96,11 @@ def editarPerfil(request):
     
         else:
 
-            miForumlario = UserEditForm(initial={'email':usuario.email , 'nombre':usuario.nombre , 'apellido':usuario.apellido})
+            miFormulario = UserEditForm(initial={'email':usuario.email , 'username':usuario.username})
             return render(request, "Cuenta/template/editarPerfil.html")
 
     else:
-        miForumlario = UserEditForm(initial ={'email':usuario.email , 'nombre':usuario.nombre , 'apellido':usuario.apellido})
-        return render(request, "Cuenta/template/editarPerfil.html", {"miFormulario":miForumlario, "usuario":usuario})        
-
-
-
- 
-            
+        miFormulario = UserEditForm(initial ={'email':usuario.email , 'username':usuario.username})
+        return render(request, "Cuenta/template/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})  
 
 

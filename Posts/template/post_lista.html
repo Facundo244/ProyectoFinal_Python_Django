@@ -14,7 +14,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -24,37 +23,43 @@
 
 <body>
 
-    <h1>Post publicados C:</h1>
+    <h2>Post publicados</h2>
     <ul>
 
         {% for post in object_list %}
 
-            <li>
-
-                <p>TITULO: {{ post.titulo}}</p>
-                <p>SUBTITULO: {{ post.subtitulo}}</p>
-                <p>
-
-                    <a href="{% url 'post_detail' post.id%}" > Ver</a>
-                    <a href="{% url 'post_edit' post.id %}" > Editar</a>
-                    <a href="{% url 'post_borrar' post.id %}" > Eliminar</a>
-
-
-                </p>
-
-
-
-            </li>
-
+        <li>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="card mb-6">
+                        <span class="border border-dark">
+                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="" /></a>
+                        <div class="card-body">
+                            
+                            <div class="small text-muted">{{ post.fecha}}</div>
+                                <h2 class="card-title h4">{{ post.titulo}}</h2>
+                                <p class="card-text">{{post.subtitulo}}</p>
+                                <a href="{% url 'post_detail' post.id%}" class="btn btn-outline-dark" > Ver</a>
+                                <a href="{% url 'post_edit' post.id %}" class="btn btn-outline-dark" > Editar</a>
+                                <a href="{% url 'post_borrar' post.id %}" class="btn btn-outline-danger" > Eliminar</a> 
+                            </span>        
+                        </div>
+                    </div>
+                </div>  
+            </div>    
+        </li>
 
 
         {% endfor %}
 
         </ul>
 
+</div>
+
 
 </body>
 </html>
 
 {% endblock contenidoQueCambia %}
+
 
