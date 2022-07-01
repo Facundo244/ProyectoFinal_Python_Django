@@ -1,13 +1,11 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.generic import  ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView , UpdateView  , CreateView
-import Posts
+from django.views.generic.edit import DeleteView , UpdateView
 from Posts.models import Post
-from Posts.forms import FormularioPost  , BuscarPost
+from Posts.forms import FormularioPost 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q 
 
