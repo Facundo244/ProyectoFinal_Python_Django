@@ -1,3 +1,4 @@
+import re
 from urllib import request
 from django.shortcuts import redirect, render
 from django.contrib.auth import login , authenticate
@@ -6,8 +7,12 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from Cuenta.models import *
 from Cuenta.form import *
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
-from Cuenta.form import  UserEditForm, UserRegisterForm
+
+from Cuenta.form import User_Edit_Form , UserRegisterForm
 
 
 
@@ -73,34 +78,22 @@ def perfil(request):
 @login_required
 def editarPerfil(request):
 
-
     usuario = request.user
 
-
     if request.method == 'POST':
+        formulario = User_Edit_Form(request.POST , instance=usuario)
 
-        miFormulario = UserEditForm(request.POST)
-        if miFormulario.is_valid():
+        if formulario.is_valid():
 
-
-            informacion = miFormulario.cleaned_data
-            usuario.username = informacion['username']
+            informacion = formulario.cleaned_data
             usuario.email = informacion['email']
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password2']
-            usuario.nombre = informacion['nombre']
-            usuario.apellido = informacion['apellido']
             usuario.save()
 
-            return redirect("Inicio")
-    
-        else:
-
-            miFormulario = UserEditForm(initial={'email':usuario.email , 'username':usuario.username})
-            return render(request, "Cuenta/template/editarPerfil.html")
-
+            return render(request , 'AppCoder/template/inicio.html', {'mensaje':'Datos cambiados exitosamente'})
     else:
-        miFormulario = UserEditForm(initial ={'email':usuario.email , 'username':usuario.username})
-        return render(request, "Cuenta/template/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})  
+        formulario = User_Edit_Form(instance=usuario)
+        return render(request , 'Cuenta/template/editarPerfil.html' , {'formulario':formulario , 'usuario':usuario.username})
 
 

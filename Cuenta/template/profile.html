@@ -5,8 +5,8 @@
 
 <h3>PERFIL</h3>
 <h3> De {{ request.user.username }}</h3>
-<h3> {{ request.user.nombre}}</h3>
-<h3> {{ request.user.apellido}}</h3>
+<h3> {{ request.user.first_name}}</h3>
+<h3> {{ request.user.last_name}}</h3>
 <h3> {{ request.user.email}}</h3>
 
 {% endblock page %}

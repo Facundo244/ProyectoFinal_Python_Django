@@ -30,7 +30,7 @@
                         <li class="nav-item"><a class="nav-link" href= "{% url 'postFormulario'%}" >Publicar Post </a>
                         <li class="nav-item"><a class="nav-link" href="{% url 'AcercaDeNosotros'%}">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout </a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil'%}">Editar Perfil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}">Editar Perfil </a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'perfil'%}"> {{request.user.username}} </a></li>
                         
                         {% else %}
@@ -60,17 +60,10 @@
 
         {% block contenidoQueCambia %} 
 
-        
-        <!-- Page content-->
+    
             
-                <!-- Side widgets-->
-                
-                    <!-- Search widget-->
-                    
-                    <!-- Categories widget-->
-                    
-                    <!-- Side widget-->
-                  
+    
+        <!--footer-->
         
         <footer class="py-3 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright 2022 &copy; Code Blog <a href="#" class="text-info"><br>Author: Facundo Morcillo</a></p></div>

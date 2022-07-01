@@ -8,7 +8,7 @@ urlpatterns = [
      path("logout/" , LogoutView.as_view(template_name = 'Cuenta/template/logout.html'), name = 'logout'),
      path("editarPerfil/", views.editarPerfil , name ="EditarPerfil"), 
      path("perfi/" , views.perfil, name="perfil"),
-
+     
 
 ]
  

@@ -71,11 +71,6 @@ class PostList(LoginRequiredMixin , ListView):
     template_name = 'Posts/template/post_lista.html'
 
 
-class PostCreate(LoginRequiredMixin ,CreateView):
-
-    model = Post
-    success_url = reverse_lazy('post_lista')
-    fields = ['titulo' , 'subtitulo' , 'texto' , 'autor' , 'fecha']
 
 
 

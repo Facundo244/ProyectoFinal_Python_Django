@@ -11,15 +11,15 @@
 
 {% block contenidoQueCambia %} 
 
-<form action="" method="POST"> {% csrf_token %} 
+<form action="{% url 'EditarPerfil' %}" method="POST"> {% csrf_token %} 
 
    <table>
 
-        {{ miFormulario.as_table}}
+        {{ formulario.as_table}}
 
    </table>
 
-   <button type="submit" class="btn btn-dark" >Guardar</button>
-
+   <button type="submit" class="btn  btn-dark"  value="Enviar">Guardar</button>
+   <a href="{% url 'change_password' %}" > Editar Contrasenia</a>
 </form>
 {% endblock contenidoQueCambia %}
