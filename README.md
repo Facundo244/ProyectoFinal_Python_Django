@@ -1,3 +1,4 @@
-# ProyectoDemo
+#Precto final de coderhouse - Blog 
 
-Proyecto de Python con el framework Django , curso de CoderHouse
+
+Este proyecto lo hice yo solo porque mi compañero nunca me respondio a nada de lo que le hable
