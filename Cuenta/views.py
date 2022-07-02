@@ -1,15 +1,11 @@
-import re
-from urllib import request
-from django.shortcuts import redirect, render
+from django.shortcuts import  render
 from django.contrib.auth import login , authenticate
 from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from Cuenta.models import *
 from Cuenta.form import *
-from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
+
 
 
 from Cuenta.form import User_Edit_Form , UserRegisterForm
@@ -95,5 +91,7 @@ def editarPerfil(request):
     else:
         formulario = User_Edit_Form(instance=usuario)
         return render(request , 'Cuenta/template/editarPerfil.html' , {'formulario':formulario , 'usuario':usuario.username})
+
+
 
 

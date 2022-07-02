@@ -28,10 +28,10 @@
                         {% if request.user.is_authenticated %}
 
                         <li class="nav-item"><a class="nav-link" href= "{% url 'postFormulario'%}" >Publicar Post </a>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'AcercaDeNosotros'%}">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout </a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}">Editar Perfil </a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'perfil'%}"> {{request.user.username}} </a></li>
+                        
                         
                         {% else %}
                         
