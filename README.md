@@ -1,4 +1,4 @@
-#Precto final de coderhouse - Blog 
+#Proyecto final de coderhouse - Blog 
 
 Integrante: Facundo Joel Morcillo
 
